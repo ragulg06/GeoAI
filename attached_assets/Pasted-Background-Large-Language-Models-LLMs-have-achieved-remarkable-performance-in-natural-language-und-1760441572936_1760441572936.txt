@@ -1,0 +1,18 @@
+Background
+Large Language Models (LLMs) have achieved remarkable performance in natural language understanding and generation. However, real-world applications often require reasoning across multiple modalities, particularly the ability to interpret and generate responses grounded in visual input. On 5th August 2025, OpenAI released GPT-OSS (20b and 120b) open-weight models with state-of-the-art real-world performance at low cost. GPT-OSS-120B achieves near-parity with OpenAI o4-mini on core reasoning benchmarks while running efficiently on single 80GB GPU.
+
+Detailed Description
+While GPT-OSS performs very well in text-based reasoning, it cannot process or reason over images. The challenge is to augment GPT-OSS with visual perception — a lightweight projection-based alignment between a vision encoder and the LLM, trained using open datasets. The proposed system is to demonstrate capable of image captioning, visual question answering (VQA), and multimodal instruction-following, while preserving the open-source nature of the base model.
+
+Key challenges include:
+Aligning vision embeddings with the LLM’s text embedding space without degrading textual capabilities.
+Sourcing high-quality multimodal datasets that are open and permissive for redistribution.
+Achieving competitive multimodal performance within reasonable compute budgets.
+
+Expected Solution
+The proposed/developed solutions are to address the mentioned challenges by creating a reproducible multimodal GPT-OSS model trained with publicly available datasets and an efficient training strategy. Following deliverables are expected:
+A multimodal GPT-OSS model with vision understanding.
+Training scripts and dataset manifests for reproducibility.
+Benchmarks showing competitive performance against other open multimodal models.
+A foundation for extending GPT-OSS into more advanced multimodal reasoning domains.
+Linkage to ISRO EO Data: Augmentation of vision capabilities in state-of-the-art LLMs can be adapted for EO data analysis and interpretation. Such system could support highly accurate & automated Land-cover classification, change detection and environment monitoring by producing natural language explanations that cite visual evidence. Project aims to bridge the gap between Level-1 and Level-2 EO Data and decision makers/application users by enabling conversational exploration of large geospatial archives, interactive QA over time-series imagery and generation of rich, human readable reports that combine spatial analytics with domain specific reasoning.

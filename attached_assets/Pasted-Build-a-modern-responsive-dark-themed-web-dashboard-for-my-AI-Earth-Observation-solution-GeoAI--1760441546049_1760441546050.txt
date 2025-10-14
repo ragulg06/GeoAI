@@ -1,0 +1,85 @@
+Build a modern, responsive, dark-themed web dashboard for my AI Earth Observation solution (GeoAI / TerraMind-OSS) with the following features:
+
+Landing Page
+
+Visually appealing hero section (dark mode).
+
+Short explanation: "GeoAI is an open-source platform for real-time satellite image analysis, turning Earth Observation data into natural-language insights for ISRO & beyond."
+
+Add SVG/PNG/animated EO satellite, globe, or multispectral imagery as visual elements.
+
+Section for a “Competitive Edge” table or bullet points about multimodal, low-latency EO intelligence.
+
+Clearly branded (logo, solution name).
+
+External Links (top, right-side, or floating icons)
+
+GitHub link icon (opens repo in new tab)
+
+Hugging Face Spaces link icon (opens in new tab)
+
+Tooltips on hover: "View on GitHub", "Try Model on Hugging Face Spaces"
+
+Navigation
+
+Dark mode navigation bar.
+
+Tabs: "Home", "Chat", "Docs" (optional)
+
+Chat Page
+
+Chat interface styled like ChatGPT/Perplexity (dark mode).
+
+Prompt input area at the bottom.
+
+Prominent placeholder or “drag & drop” for image upload (supports .jpg, .png, .tif, etc).
+
+1-click buttons (chips) for quick-use cases ABOVE OR IN prompt:
+
+"Image Captioning"
+
+"Visual Question Answering"
+
+"Change Detection"
+
+"Report Generation"
+
+When a user clicks a chip, it should prefill the prompt with a sample question (e.g., “Describe this image”, “What is the main land cover?”).
+
+When an image is uploaded, it should preview in the chat, and the inference is made with the selected use-case.
+
+Features
+
+Real-time response loading indicator (“GeoAI is thinking…”)
+
+Scrollable chat history
+
+Responses can include formatted text and optionally charts/images if returned by the backend
+
+Error handling if user submits empty text or no image
+
+Tech Stack
+
+Use React (with Next.js or Vite) or Python (with FastAPI or Flask & Gradio), or a stack Auto detects—your choice.
+
+Use TailwindCSS, Material UI, or Chakra UI for beautiful dark mode styling.
+
+Should be mobile responsive.
+
+Bonus
+
+Floating feedback/help button (“?” icon)
+
+Footer with links to documentation, privacy policy, and contact (dummy)
+
+Integration/readiness for backend API calls (e.g., /api/chat endpoint)
+
+Summary of user experience flow:
+
+On site open: see a visually branded dark home page with about, visuals, and links.
+
+Can navigate to chat tab or click “Chat” to go to interactive page.
+
+In chat, user can upload EO image, pick use-case, enter text prompt, and see natural-language & analytic responses in real-time.
+
+Do not use any paid/proprietary UI kit
