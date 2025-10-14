@@ -1,13 +1,14 @@
 import { useState, useRef, useEffect } from "react";
 import Navigation from "@/components/Navigation";
-import ChatMessage from "@/components/ChatMessage";
+import EnhancedChatMessage from "@/components/EnhancedChatMessage";
 import ChatInput from "@/components/ChatInput";
-import UseCaseChips from "@/components/UseCaseChips";
+import EnhancedUseCaseChips from "@/components/EnhancedUseCaseChips";
 import ImageUpload from "@/components/ImageUpload";
 import LoadingIndicator from "@/components/LoadingIndicator";
+import AnalyticsDashboard from "@/components/AnalyticsDashboard";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { HelpCircle } from "lucide-react";
+import { HelpCircle, Satellite } from "lucide-react";
 
 interface Message {
   id: string;
@@ -15,6 +16,9 @@ interface Message {
   content: string;
   imageUrl?: string;
   timestamp: string;
+  confidence?: number;
+  landCoverData?: { type: string; percentage: number }[];
+  useCase?: string;
 }
 
 export default function Chat() {
@@ -23,7 +27,7 @@ export default function Chat() {
   const [inputValue, setInputValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [uploadedImage, setUploadedImage] = useState<string | null>(null);
-  const [showImageUpload, setShowImageUpload] = useState(false);
+  const [selectedUseCase, setSelectedUseCase] = useState<string>("");
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -52,27 +56,38 @@ export default function Chat() {
     setUploadedImage(null);
     setIsLoading(true);
 
-    //todo: remove mock functionality - simulate AI response
+    //todo: remove mock functionality - simulate AI response with realistic EO data
     setTimeout(() => {
       const aiMessage: Message = {
         id: (Date.now() + 1).toString(),
         role: "assistant",
-        content: `Based on the analysis, I can provide insights on the satellite imagery:\n\n**Image Analysis:**\nThe satellite data shows clear patterns of land use classification. I've identified urban development areas, agricultural zones, and natural vegetation cover.\n\n**Key Findings:**\n• Urban density: High concentration in central regions\n• Vegetation health: NDVI values indicate healthy crop growth\n• Water resources: Several water bodies detected in the eastern quadrant\n\nWould you like me to provide more detailed analysis on any specific aspect?`,
-        timestamp
+        content: `**Earth Observation Analysis Complete**\n\nBased on multispectral analysis using EarthDial vision encoder and GPT-OSS processing:\n\n**Land Cover Classification:**\nThe imagery reveals a diverse landscape with distinct land use patterns:\n\n• **Urban/Built-up Areas:** Dense settlement clusters visible in the southern quadrant, covering approximately 28% of the analyzed region\n• **Agricultural Land:** Extensive cultivated fields showing healthy vegetation (NDVI: 0.72-0.85), representing 42% of total area\n• **Forest Cover:** Dense canopy in northern sectors with high biomass indicators, approximately 23% coverage\n• **Water Bodies:** Multiple reservoirs and river systems detected in eastern region (7% of area)\n\n**Environmental Indicators:**\n• Vegetation Health Index: 0.78 (Healthy)\n• Surface Temperature: 28-32°C (Normal range)\n• Soil Moisture: Adequate levels detected in agricultural zones\n\n**Change Detection Notes:**\nMinor urban expansion detected compared to baseline imagery (2.3% increase in built-up area over 6 months).\n\n*Analysis completed in 2.8 seconds using quantized single-GPU deployment.*`,
+        timestamp,
+        confidence: 94,
+        landCoverData: [
+          { type: "Agriculture", percentage: 42 },
+          { type: "Urban", percentage: 28 },
+          { type: "Forest", percentage: 23 },
+          { type: "Water", percentage: 7 }
+        ],
+        useCase: selectedUseCase === "captioning" ? "Image Captioning" : 
+                selectedUseCase === "vqa" ? "Visual Q&A" :
+                selectedUseCase === "change_detection" ? "Change Detection" : "Report Generation"
       };
       setMessages(prev => [...prev, aiMessage]);
       setIsLoading(false);
-    }, 2000);
+      setSelectedUseCase("");
+    }, 2500);
   };
 
   const handleUseCaseSelect = (useCase: string, prompt: string) => {
     setInputValue(prompt);
+    setSelectedUseCase(useCase);
     console.log('Selected use case:', useCase);
   };
 
   const handleImageSelect = (file: File, previewUrl: string) => {
     setUploadedImage(previewUrl);
-    setShowImageUpload(false);
     console.log('Image selected:', file.name);
   };
 
@@ -80,77 +95,119 @@ export default function Chat() {
     <div className="min-h-screen flex flex-col">
       <Navigation />
       
-      <main className="flex-1 pt-16 pb-32 overflow-hidden">
-        <div className="max-w-4xl mx-auto px-6 py-8">
-          {messages.length === 0 && !showImageUpload ? (
-            <div className="flex flex-col items-center justify-center min-h-[60vh] text-center">
+      <main className="flex-1 pt-16 pb-64 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 py-8">
+          {/* Analytics Dashboard */}
+          <div className="mb-8">
+            <AnalyticsDashboard />
+          </div>
+
+          {messages.length === 0 ? (
+            <div className="flex flex-col items-center justify-center min-h-[50vh] text-center">
               <div className="size-20 rounded-full bg-primary/10 flex items-center justify-center mb-6">
-                <svg className="size-10 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
+                <Satellite className="size-10 text-primary" />
               </div>
-              <h2 className="text-3xl font-bold mb-3">Start Your Earth Observation Analysis</h2>
+              <h2 className="text-3xl font-bold mb-3">GeoAI Analysis Platform</h2>
               <p className="text-muted-foreground text-lg mb-8 max-w-2xl">
-                Upload satellite imagery and select a use case to get AI-powered insights on land cover, change detection, and environmental monitoring.
+                Upload satellite imagery and select an analysis mode to get AI-powered insights using EarthDial + GPT-OSS
               </p>
-              <Button 
-                size="lg"
-                onClick={() => setShowImageUpload(true)}
-                data-testid="button-start-upload"
-              >
-                Upload Satellite Image
-              </Button>
             </div>
           ) : (
-            <>
-              {showImageUpload && (
-                <Card className="mb-6 p-6">
-                  <h3 className="font-semibold mb-4">Upload Satellite Image</h3>
-                  <ImageUpload
-                    onImageSelect={handleImageSelect}
-                    currentImage={uploadedImage}
-                    onRemoveImage={() => setUploadedImage(null)}
-                  />
-                </Card>
-              )}
-
-              {uploadedImage && !showImageUpload && (
-                <Card className="mb-6 p-6">
-                  <h3 className="font-semibold mb-4">Select Analysis Type</h3>
-                  <UseCaseChips onSelectUseCase={handleUseCaseSelect} />
-                  <ImageUpload
-                    onImageSelect={handleImageSelect}
-                    currentImage={uploadedImage}
-                    onRemoveImage={() => setUploadedImage(null)}
-                  />
-                </Card>
-              )}
-
-              <div className="space-y-4">
-                {messages.map((message) => (
-                  <ChatMessage
-                    key={message.id}
-                    role={message.role}
-                    content={message.content}
-                    imageUrl={message.imageUrl}
-                    timestamp={message.timestamp}
-                  />
-                ))}
-                {isLoading && <LoadingIndicator />}
-                <div ref={messagesEndRef} />
-              </div>
-            </>
+            <div className="max-w-5xl mx-auto space-y-4">
+              {messages.map((message) => (
+                <EnhancedChatMessage
+                  key={message.id}
+                  role={message.role}
+                  content={message.content}
+                  imageUrl={message.imageUrl}
+                  timestamp={message.timestamp}
+                  confidence={message.confidence}
+                  landCoverData={message.landCoverData}
+                  useCase={message.useCase}
+                />
+              ))}
+              {isLoading && <LoadingIndicator />}
+              <div ref={messagesEndRef} />
+            </div>
           )}
         </div>
       </main>
 
-      <ChatInput
-        value={inputValue}
-        onChange={setInputValue}
-        onSend={handleSendMessage}
-        onImageUploadClick={() => setShowImageUpload(!showImageUpload)}
-        disabled={isLoading}
-      />
+      {/* Enhanced Input Area with Persistent Chips */}
+      <div className="fixed bottom-0 left-0 right-0 border-t border-border/40 bg-background/95 backdrop-blur-xl">
+        <div className="max-w-5xl mx-auto px-6 py-4">
+          {/* Image Upload Section */}
+          {uploadedImage && (
+            <div className="mb-4">
+              <ImageUpload
+                onImageSelect={handleImageSelect}
+                currentImage={uploadedImage}
+                onRemoveImage={() => setUploadedImage(null)}
+              />
+            </div>
+          )}
+          
+          {/* Use Case Chips - Always Visible */}
+          <div className="mb-4">
+            <EnhancedUseCaseChips 
+              onSelectUseCase={handleUseCaseSelect}
+              selectedUseCase={selectedUseCase}
+            />
+          </div>
+          
+          {/* Input Area */}
+          <div className="flex gap-2">
+            <Button
+              size="icon"
+              variant="ghost"
+              onClick={() => {
+                const input = document.createElement('input');
+                input.type = 'file';
+                input.accept = 'image/*,.tif,.tiff';
+                input.onchange = (e) => {
+                  const file = (e.target as HTMLInputElement).files?.[0];
+                  if (file) {
+                    const previewUrl = URL.createObjectURL(file);
+                    handleImageSelect(file, previewUrl);
+                  }
+                };
+                input.click();
+              }}
+              data-testid="button-upload"
+            >
+              <svg className="size-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
+              </svg>
+            </Button>
+            
+            <input
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                  e.preventDefault();
+                  handleSendMessage(inputValue);
+                }
+              }}
+              placeholder="Ask about satellite imagery, land cover, change detection, or request a detailed report..."
+              className="flex-1 px-4 py-3 bg-secondary rounded-lg border border-border focus:outline-none focus:ring-2 focus:ring-primary/40 resize-none"
+              disabled={isLoading}
+              data-testid="input-message"
+            />
+            
+            <Button
+              size="icon"
+              onClick={() => handleSendMessage(inputValue)}
+              disabled={!inputValue.trim() || isLoading}
+              data-testid="button-send"
+            >
+              <svg className="size-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+              </svg>
+            </Button>
+          </div>
+        </div>
+      </div>
 
       {/* Floating Help Button */}
       <Button

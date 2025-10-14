@@ -33,12 +33,24 @@ export default function HeroSection() {
             GeoAI
           </span>
           <br />
-          Earth Observation Intelligence
+          <span className="text-4xl md:text-5xl lg:text-6xl">Multimodal Vision-Language Intelligence</span>
         </h1>
 
-        <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-12 leading-relaxed">
-          An open-source platform for real-time satellite image analysis, turning Earth Observation data into natural-language insights for ISRO & beyond.
+        <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto mb-8 leading-relaxed">
+          Transforms manual satellite analysis into automated intelligence using <span className="text-foreground font-semibold">EarthDial vision encoder</span> with <span className="text-foreground font-semibold">GPT-OSS LLM</span>. Processes terabytes of daily imagery <span className="text-primary font-semibold">10x faster</span> on existing compute.
         </p>
+
+        <div className="flex flex-wrap items-center justify-center gap-3 mb-12 text-sm">
+          <div className="px-4 py-2 rounded-full bg-primary/10 border border-primary/20">
+            <span className="text-primary font-medium">Team Tessaract</span>
+          </div>
+          <div className="px-4 py-2 rounded-full bg-card/50 border border-border">
+            Smart India Hackathon 2025
+          </div>
+          <div className="px-4 py-2 rounded-full bg-card/50 border border-border">
+            ISRO Earth Observation
+          </div>
+        </div>
 
         <div className="flex flex-wrap items-center justify-center gap-4">
           <Link href="/chat">

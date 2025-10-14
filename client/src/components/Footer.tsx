@@ -24,17 +24,13 @@ export default function Footer() {
             <h4 className="font-semibold mb-4">Product</h4>
             <ul className="space-y-2">
               <li>
-                <Link href="/chat">
-                  <a className="text-sm text-muted-foreground hover:text-foreground transition-colors" data-testid="footer-chat">
-                    Chat Interface
-                  </a>
+                <Link href="/chat" className="text-sm text-muted-foreground hover:text-foreground transition-colors" data-testid="footer-chat">
+                  Chat Interface
                 </Link>
               </li>
               <li>
-                <Link href="/docs">
-                  <a className="text-sm text-muted-foreground hover:text-foreground transition-colors" data-testid="footer-docs">
-                    Documentation
-                  </a>
+                <Link href="/docs" className="text-sm text-muted-foreground hover:text-foreground transition-colors" data-testid="footer-docs">
+                  Documentation
                 </Link>
               </li>
               <li>
