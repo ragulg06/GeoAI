@@ -44,7 +44,7 @@ export default function EnhancedChatMessage({
         </AvatarFallback>
       </Avatar>
 
-      <div className={cn("flex flex-col gap-2 max-w-[80%]", isUser && "items-end")}>
+      <div className={cn("flex flex-col gap-2 max-w-[85%] sm:max-w-[80%]", isUser && "items-end")}>
         {useCase && !isUser && (
           <Badge variant="secondary" className="w-fit">
             {useCase}
@@ -63,11 +63,11 @@ export default function EnhancedChatMessage({
             />
           )}
           
-          <p className="text-sm leading-relaxed whitespace-pre-wrap mb-3">{content}</p>
+          <p className="text-sm leading-relaxed whitespace-pre-wrap mb-3 text-foreground">{content}</p>
           
           {landCoverData && landCoverData.length > 0 && (
             <div className="mt-4 pt-4 border-t border-border/40 space-y-2">
-              <h4 className="text-xs font-semibold mb-3">Land Cover Analysis</h4>
+              <h4 className="text-xs font-semibold mb-3 text-foreground">Land Cover Analysis</h4>
               {landCoverData.map((item, index) => (
                 <div key={index} className="flex items-center gap-3">
                   <span className="text-xs text-muted-foreground w-24">{item.type}</span>
@@ -77,7 +77,7 @@ export default function EnhancedChatMessage({
                       style={{ width: `${item.percentage}%` }}
                     />
                   </div>
-                  <span className="text-xs font-medium w-12 text-right">{item.percentage}%</span>
+                  <span className="text-xs font-medium w-12 text-right text-foreground">{item.percentage}%</span>
                 </div>
               ))}
             </div>

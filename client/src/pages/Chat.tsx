@@ -107,8 +107,8 @@ export default function Chat() {
               <div className="size-20 rounded-full bg-primary/10 flex items-center justify-center mb-6">
                 <Satellite className="size-10 text-primary" />
               </div>
-              <h2 className="text-3xl font-bold mb-3">GeoAI Analysis Platform</h2>
-              <p className="text-muted-foreground text-lg mb-8 max-w-2xl">
+              <h2 className="text-2xl sm:text-3xl font-bold mb-3 text-foreground">GeoAI Analysis Platform</h2>
+              <p className="text-muted-foreground text-base sm:text-lg mb-8 max-w-2xl">
                 Upload satellite imagery and select an analysis mode to get AI-powered insights using EarthDial + GPT-OSS
               </p>
             </div>
@@ -135,7 +135,7 @@ export default function Chat() {
 
       {/* Enhanced Input Area with Persistent Chips */}
       <div className="fixed bottom-0 left-0 right-0 border-t border-border/40 bg-background/95 backdrop-blur-xl">
-        <div className="max-w-5xl mx-auto px-6 py-4">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-4">
           {/* Image Upload Section */}
           {uploadedImage && (
             <div className="mb-4">
@@ -190,7 +190,7 @@ export default function Chat() {
                 }
               }}
               placeholder="Ask about satellite imagery, land cover, change detection, or request a detailed report..."
-              className="flex-1 px-4 py-3 bg-secondary rounded-lg border border-border focus:outline-none focus:ring-2 focus:ring-primary/40 resize-none"
+              className="flex-1 px-3 sm:px-4 py-2 sm:py-3 bg-secondary rounded-lg border border-border focus:outline-none focus:ring-2 focus:ring-primary/40 resize-none text-foreground text-sm sm:text-base"
               disabled={isLoading}
               data-testid="input-message"
             />
@@ -213,7 +213,7 @@ export default function Chat() {
       <Button
         size="icon"
         variant="secondary"
-        className="fixed bottom-24 right-6 size-12 rounded-full shadow-lg"
+        className="fixed bottom-24 right-4 sm:right-6 size-10 sm:size-12 rounded-full shadow-lg"
         data-testid="button-help"
       >
         <HelpCircle className="size-6" />

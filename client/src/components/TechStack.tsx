@@ -39,8 +39,8 @@ export default function TechStack() {
     <section className="py-24 px-6 bg-card/30">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">Technology Stack</h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-foreground">Technology Stack</h2>
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto">
             Built on proven open-source technologies for production-grade reliability
           </p>
         </div>
@@ -58,7 +58,7 @@ export default function TechStack() {
                   <div className="size-10 rounded-lg bg-primary/10 flex items-center justify-center">
                     <Icon className="size-5 text-primary" />
                   </div>
-                  <h3 className="font-semibold">{category.title}</h3>
+                  <h3 className="font-semibold text-foreground text-sm sm:text-base">{category.title}</h3>
                 </div>
                 <ul className="space-y-2">
                   {category.items.map((item, i) => (
@@ -74,23 +74,23 @@ export default function TechStack() {
         </div>
 
         {/* Deployment Highlights */}
-        <Card className="p-8 bg-gradient-to-br from-primary/5 to-chart-2/5">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
+        <Card className="p-4 sm:p-8 bg-gradient-to-br from-primary/5 to-chart-2/5">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 text-center">
             <div>
-              <div className="text-3xl font-bold text-primary mb-2">&lt;10 GB</div>
-              <p className="text-sm text-muted-foreground">Single GPU Memory</p>
+              <div className="text-2xl sm:text-3xl font-bold text-primary mb-2">&lt;10 GB</div>
+              <p className="text-xs sm:text-sm text-muted-foreground">Single GPU Memory</p>
             </div>
             <div>
-              <div className="text-3xl font-bold text-chart-2 mb-2">36-52h</div>
-              <p className="text-sm text-muted-foreground">MVP Development</p>
+              <div className="text-2xl sm:text-3xl font-bold text-chart-2 mb-2">36-52h</div>
+              <p className="text-xs sm:text-sm text-muted-foreground">MVP Development</p>
             </div>
             <div>
-              <div className="text-3xl font-bold text-chart-3 mb-2">3 months</div>
-              <p className="text-sm text-muted-foreground">Production Ready</p>
+              <div className="text-2xl sm:text-3xl font-bold text-chart-3 mb-2">3 months</div>
+              <p className="text-xs sm:text-sm text-muted-foreground">Production Ready</p>
             </div>
             <div>
-              <div className="text-3xl font-bold text-chart-4 mb-2">Zero</div>
-              <p className="text-sm text-muted-foreground">Licensing Fees</p>
+              <div className="text-2xl sm:text-3xl font-bold text-chart-4 mb-2">Zero</div>
+              <p className="text-xs sm:text-sm text-muted-foreground">Licensing Fees</p>
             </div>
           </div>
         </Card>

@@ -55,8 +55,8 @@ export default function BenchmarkComparison() {
             <TrendingUp className="size-4 text-chart-3" />
             <span className="text-sm font-medium text-chart-3">Benchmark Results</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">Performance Comparison</h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-foreground">Performance Comparison</h2>
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto">
             GeoAI outperforms existing multimodal solutions in speed, efficiency, and EO-specific capabilities
           </p>
         </div>
@@ -66,16 +66,16 @@ export default function BenchmarkComparison() {
             <table className="w-full">
               <thead className="bg-card/50">
                 <tr className="border-b border-border">
-                  <th className="text-left p-4 font-semibold">Metric</th>
-                  <th className="text-center p-4 font-semibold">
+                  <th className="text-left p-2 sm:p-4 font-semibold text-foreground text-xs sm:text-sm md:text-base">Metric</th>
+                  <th className="text-center p-2 sm:p-4 font-semibold text-xs sm:text-sm md:text-base">
                     <div className="flex flex-col items-center">
                       <span className="text-primary">GeoAI</span>
-                      <span className="text-xs font-normal text-muted-foreground">(Our Solution)</span>
+                      <span className="text-xs font-normal text-muted-foreground hidden sm:inline">(Our Solution)</span>
                     </div>
                   </th>
-                  <th className="text-center p-4 font-semibold">BLIP-2</th>
-                  <th className="text-center p-4 font-semibold">CLIP+LLM</th>
-                  <th className="text-center p-4 font-semibold">InternVL/LLaVA</th>
+                  <th className="text-center p-2 sm:p-4 font-semibold text-foreground text-xs sm:text-sm md:text-base hidden lg:table-cell">BLIP-2</th>
+                  <th className="text-center p-2 sm:p-4 font-semibold text-foreground text-xs sm:text-sm md:text-base hidden md:table-cell">CLIP+LLM</th>
+                  <th className="text-center p-2 sm:p-4 font-semibold text-foreground text-xs sm:text-sm md:text-base">InternVL/LLaVA</th>
                 </tr>
               </thead>
               <tbody>
@@ -85,8 +85,8 @@ export default function BenchmarkComparison() {
                     className="border-b border-border last:border-0 hover-elevate"
                     data-testid={`benchmark-row-${index}`}
                   >
-                    <td className="p-4 font-medium">{row.metric}</td>
-                    <td className="p-4">
+                    <td className="p-2 sm:p-4 font-medium text-foreground text-xs sm:text-sm">{row.metric}</td>
+                    <td className="p-2 sm:p-4">
                       <div className="flex flex-col items-center gap-1">
                         <div className={`flex items-center gap-2 px-3 py-1 rounded-full ${
                           row.geoai.status === 'high' ? 'bg-chart-3/10 text-chart-3' : 
@@ -98,9 +98,9 @@ export default function BenchmarkComparison() {
                         </div>
                       </div>
                     </td>
-                    <td className="p-4 text-center text-sm text-muted-foreground">{row.blip2.value}</td>
-                    <td className="p-4 text-center text-sm text-muted-foreground">{row.clipllm.value}</td>
-                    <td className="p-4 text-center text-sm text-muted-foreground">{row.internvl.value}</td>
+                    <td className="p-2 sm:p-4 text-center text-xs sm:text-sm text-muted-foreground hidden lg:table-cell">{row.blip2.value}</td>
+                    <td className="p-2 sm:p-4 text-center text-xs sm:text-sm text-muted-foreground hidden md:table-cell">{row.clipllm.value}</td>
+                    <td className="p-2 sm:p-4 text-center text-xs sm:text-sm text-muted-foreground">{row.internvl.value}</td>
                   </tr>
                 ))}
               </tbody>
@@ -110,17 +110,17 @@ export default function BenchmarkComparison() {
 
         {/* Key Stats */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
-          <Card className="p-6 text-center bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20">
-            <div className="text-4xl font-bold text-primary mb-2">10x</div>
-            <p className="text-sm text-muted-foreground">Faster processing on existing compute</p>
+          <Card className="p-4 sm:p-6 text-center bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20">
+            <div className="text-3xl sm:text-4xl font-bold text-primary mb-2">10x</div>
+            <p className="text-xs sm:text-sm text-muted-foreground">Faster processing on existing compute</p>
           </Card>
-          <Card className="p-6 text-center bg-gradient-to-br from-chart-3/5 to-chart-3/10 border-chart-3/20">
-            <div className="text-4xl font-bold text-chart-3 mb-2">92%</div>
-            <p className="text-sm text-muted-foreground">Parameter reduction with LoRA fine-tuning</p>
+          <Card className="p-4 sm:p-6 text-center bg-gradient-to-br from-chart-3/5 to-chart-3/10 border-chart-3/20">
+            <div className="text-3xl sm:text-4xl font-bold text-chart-3 mb-2">92%</div>
+            <p className="text-xs sm:text-sm text-muted-foreground">Parameter reduction with LoRA fine-tuning</p>
           </Card>
-          <Card className="p-6 text-center bg-gradient-to-br from-chart-2/5 to-chart-2/10 border-chart-2/20">
-            <div className="text-4xl font-bold text-chart-2 mb-2">88%</div>
-            <p className="text-sm text-muted-foreground">Compute savings while maintaining accuracy</p>
+          <Card className="p-4 sm:p-6 text-center bg-gradient-to-br from-chart-2/5 to-chart-2/10 border-chart-2/20">
+            <div className="text-3xl sm:text-4xl font-bold text-chart-2 mb-2">88%</div>
+            <p className="text-xs sm:text-sm text-muted-foreground">Compute savings while maintaining accuracy</p>
           </Card>
         </div>
       </div>

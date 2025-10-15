@@ -49,8 +49,8 @@ export default function CompetitiveEdge() {
     <section className="py-24 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">Competitive Edge</h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-foreground">Competitive Edge</h2>
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto">
             Next-generation Earth Observation intelligence powered by multimodal AI
           </p>
         </div>
@@ -70,7 +70,7 @@ export default function CompetitiveEdge() {
                     <Icon className="size-6 text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-lg mb-2">{feature.title}</h3>
+                    <h3 className="font-semibold text-base sm:text-lg mb-2 text-foreground">{feature.title}</h3>
                     <p className="text-muted-foreground text-sm leading-relaxed">
                       {feature.description}
                     </p>
@@ -83,15 +83,15 @@ export default function CompetitiveEdge() {
 
         {/* Comparison Table */}
         <div className="max-w-4xl mx-auto">
-          <h3 className="text-2xl font-semibold text-center mb-8">GeoAI vs Traditional EO Analysis</h3>
+          <h3 className="text-xl sm:text-2xl font-semibold text-center mb-8 text-foreground">GeoAI vs Traditional EO Analysis</h3>
           <Card className="overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead>
                   <tr className="border-b border-border">
-                    <th className="text-left p-4 font-semibold">Feature</th>
-                    <th className="text-center p-4 font-semibold">GeoAI</th>
-                    <th className="text-center p-4 font-semibold">Traditional</th>
+                    <th className="text-left p-3 sm:p-4 font-semibold text-foreground text-sm sm:text-base">Feature</th>
+                    <th className="text-center p-3 sm:p-4 font-semibold text-foreground text-sm sm:text-base">GeoAI</th>
+                    <th className="text-center p-3 sm:p-4 font-semibold text-foreground text-sm sm:text-base">Traditional</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -101,8 +101,8 @@ export default function CompetitiveEdge() {
                       className="border-b border-border last:border-0"
                       data-testid={`comparison-row-${index}`}
                     >
-                      <td className="p-4">{row.feature}</td>
-                      <td className="p-4 text-center">
+                      <td className="p-3 sm:p-4 text-foreground text-sm sm:text-base">{row.feature}</td>
+                      <td className="p-3 sm:p-4 text-center">
                         {row.geoai ? (
                           <Check className="size-5 text-chart-3 mx-auto" />
                         ) : (

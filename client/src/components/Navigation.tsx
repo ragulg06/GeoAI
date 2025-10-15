@@ -16,10 +16,10 @@ export default function Navigation() {
               <div className="flex items-center justify-center size-8 rounded-md bg-primary/10">
                 <Rocket className="size-4 text-primary" />
               </div>
-              <span className="text-lg font-semibold">GeoAI</span>
+              <span className="text-lg font-semibold text-foreground">GeoAI</span>
             </Link>
             
-            <div className="hidden md:flex items-center gap-2">
+            <div className="hidden sm:flex items-center gap-2">
               <Link href="/">
                 <Button 
                   variant="ghost" 
@@ -27,8 +27,8 @@ export default function Navigation() {
                   className={location === "/" ? "bg-accent" : ""}
                   data-testid="nav-home"
                 >
-                  <Home className="size-4 mr-2" />
-                  Home
+                  <Home className="size-4 sm:mr-2" />
+                  <span className="hidden sm:inline">Home</span>
                 </Button>
               </Link>
               <Link href="/chat">
@@ -38,8 +38,8 @@ export default function Navigation() {
                   className={location === "/chat" ? "bg-accent" : ""}
                   data-testid="nav-chat"
                 >
-                  <MessageSquare className="size-4 mr-2" />
-                  Chat
+                  <MessageSquare className="size-4 sm:mr-2" />
+                  <span className="hidden sm:inline">Chat</span>
                 </Button>
               </Link>
               <Link href="/docs">
@@ -49,8 +49,8 @@ export default function Navigation() {
                   className={location === "/docs" ? "bg-accent" : ""}
                   data-testid="nav-docs"
                 >
-                  <FileText className="size-4 mr-2" />
-                  Docs
+                  <FileText className="size-4 sm:mr-2" />
+                  <span className="hidden sm:inline">Docs</span>
                 </Button>
               </Link>
             </div>

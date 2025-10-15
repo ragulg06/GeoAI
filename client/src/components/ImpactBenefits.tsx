@@ -48,8 +48,8 @@ export default function ImpactBenefits() {
     <section className="py-24 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">Impact & Benefits</h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-foreground">Impact & Benefits</h2>
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto">
             Transforming Earth Observation workflows for ISRO and the broader geospatial community
           </p>
         </div>
@@ -69,7 +69,7 @@ export default function ImpactBenefits() {
                     <Icon className="size-6 text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-semibold mb-2">{impact.title}</h3>
+                    <h3 className="font-semibold mb-2 text-foreground text-sm sm:text-base">{impact.title}</h3>
                     <p className="text-sm text-muted-foreground leading-relaxed">
                       {impact.description}
                     </p>
@@ -81,8 +81,8 @@ export default function ImpactBenefits() {
         </div>
 
         {/* Benefits List */}
-        <Card className="p-8 bg-gradient-to-br from-primary/5 to-chart-3/5">
-          <h3 className="text-2xl font-semibold mb-6 text-center">Key Benefits</h3>
+        <Card className="p-4 sm:p-8 bg-gradient-to-br from-primary/5 to-chart-3/5">
+          <h3 className="text-xl sm:text-2xl font-semibold mb-6 text-center text-foreground">Key Benefits</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {benefits.map((benefit, index) => (
               <div 
@@ -95,7 +95,7 @@ export default function ImpactBenefits() {
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
                 </div>
-                <p className="text-sm leading-relaxed">{benefit}</p>
+                <p className="text-sm leading-relaxed text-foreground">{benefit}</p>
               </div>
             ))}
           </div>

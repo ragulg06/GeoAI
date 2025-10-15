@@ -48,10 +48,10 @@ export default function Docs() {
       <Navigation />
       
       <main className="flex-1 pt-16">
-        <div className="max-w-7xl mx-auto px-6 py-16">
-          <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">Documentation</h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+          <div className="text-center mb-12 sm:mb-16">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-foreground">Documentation</h1>
+            <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto">
               Everything you need to integrate GeoAI into your Earth Observation workflows
             </p>
           </div>
@@ -69,14 +69,14 @@ export default function Docs() {
                     <div className="flex items-center justify-center size-10 rounded-lg bg-primary/10">
                       <Icon className="size-5 text-primary" />
                     </div>
-                    <h3 className="font-semibold text-lg">{section.title}</h3>
+                    <h3 className="font-semibold text-base sm:text-lg text-foreground">{section.title}</h3>
                   </div>
                   <p className="text-sm text-muted-foreground mb-4">
                     {section.description}
                   </p>
                   <ul className="space-y-2">
                     {section.items.map((item, i) => (
-                      <li key={i} className="text-sm hover:text-primary transition-colors">
+                      <li key={i} className="text-sm text-foreground hover:text-primary transition-colors">
                         • {item}
                       </li>
                     ))}
@@ -86,9 +86,9 @@ export default function Docs() {
             })}
           </div>
 
-          <Card className="mt-12 p-8 bg-primary/5 border-primary/20">
+          <Card className="mt-12 p-6 sm:p-8 bg-primary/5 border-primary/20">
             <div className="text-center">
-              <h2 className="text-2xl font-bold mb-3">Need Help?</h2>
+              <h2 className="text-xl sm:text-2xl font-bold mb-3 text-foreground">Need Help?</h2>
               <p className="text-muted-foreground mb-6">
                 Join our community or reach out to our support team
               </p>
